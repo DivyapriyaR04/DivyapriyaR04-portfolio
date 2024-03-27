@@ -199,7 +199,7 @@
                                 <div class="contact-form">
                                     <form name = "submit-to-googlesheet">
                                         <input type="text" placeholder="Name" name="Name" class="input-field">
-                                        <input type="email" placeholder="Email" name = "Email"class="input-field">
+                                        <input type="email" placeholder="Email" name = "Email" class="input-field">
                                         <textarea placeholder="Message" name="Message"class="textarea-field"></textarea>
                                         <button type="submit" class="submit-btn">Send Message</button>
                                     </form>
@@ -223,6 +223,23 @@
                                     </div>
                                     <p>&copy; 2023 Divyapriya rajkumar - Portfolio. All rights reserved.</p>
                                 </footer>
+                                <script>
+                                    const scriptURL = 'https://script.google.com/macros/s/AKfycbx2seEZYQMB84sbFmuTREtSEyDf-bU3fu9wvgWuK1iR51gvtPplSMSaq6Tg0ze1iNWb/exec'
+                                    const form = document.forms['submit-to-googlesheet']
+                                    const msg= document.getElementById("msg");
+                                    form.addEventListener('submit', e => {
+                                    e.preventDefault()
+                                    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                                        .then(response => {
+                                            msg.innerHTML= "Heyy! Message Sent."
+                                            setTimeout(function(){
+                                                msg.innerHTML=""
+                                            },1000)
+                                            form.reset()
+                                        })
+                                        .catch(error => console.error('Error!', error.message))
+                                    })
+                                </script>
                                 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
                                 <script>
                                     var typed = new Typed('#element', {
