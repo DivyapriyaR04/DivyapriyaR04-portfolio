@@ -197,7 +197,7 @@
                             <section class="contact" id="contact">
                                 <h2>Contact Me</h2>
                                 <div class="contact-form">
-                                    <form name = "submit-to-googlesheet">
+                                    <form name="contact-me" method="POST" action="https://script.google.com/macros/s/AKfycbw9Nogtq0p2l2Q4KicURkWS3f5KWxFra7LLepWQ0pfNOt9_gZOgwqALhfkwMS82wCQ5/exec">
                                         <input type="text" placeholder="Name" name="Name" class="input-field">
                                         <input type="email" placeholder="Email" name = "Email" class="input-field">
                                         <textarea placeholder="Message" name="Message"class="textarea-field"></textarea>
@@ -224,22 +224,17 @@
                                     <p>&copy; 2023 Divyapriya rajkumar - Portfolio. All rights reserved.</p>
                                 </footer>
                                 <script>
-                                    const scriptURL = 'https://script.google.com/macros/s/AKfycbx2seEZYQMB84sbFmuTREtSEyDf-bU3fu9wvgWuK1iR51gvtPplSMSaq6Tg0ze1iNWb/exec'
-                                    const form = document.forms['submit-to-googlesheet']
-                                    const msg= document.getElementById("msg");
+                                    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9Nogtq0p2l2Q4KicURkWS3f5KWxFra7LLepWQ0pfNOt9_gZOgwqALhfkwMS82wCQ5/exec'
+                                    const form = document.forms['contact-me']
                                     form.addEventListener('submit', e => {
-                                    e.preventDefault()
-                                    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                                        .then(response => {
-                                            msg.innerHTML= "Heyy! Message Sent."
-                                            setTimeout(function(){
-                                                msg.innerHTML=""
-                                            },1000)
-                                            form.reset()
-                                        })
-                                        .catch(error => console.error('Error!', error.message))
+                                      e.preventDefault()
+                                      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                                      .then(response => alert("Thank you! your form is submitted successfully." ))
+                                      .then(() => { window.location.reload(); })
+                                      .catch(error => console.error('Error!', error.message))
                                     })
                                 </script>
+                                
                                 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
                                 <script>
                                     var typed = new Typed('#element', {
