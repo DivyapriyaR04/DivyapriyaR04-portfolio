@@ -404,12 +404,18 @@
         .footer-social {
             margin-top: 20px;
         }
+       
 
         .footer-social a {
             display: inline-block;
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
+        }
+        .footer-social:hover {
+            color: rgb(39, 204, 216);
+            font-size: 1.15rem;
+
         }
 
         .footer-social a i {
